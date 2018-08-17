@@ -9,7 +9,6 @@ from collections import OrderedDict
 import cPickle as pickle 
 import re
 import sys
-sys.path.insert(0,"C:\Users\Sreeje.a\Desktop\Type-ahead_GIT")
 import Config as cfg
 
 
