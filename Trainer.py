@@ -8,7 +8,6 @@ from nltk.util import ngrams
 from collections import Counter
 from collections import defaultdict
 import  sys
-import Config as cfg
 import Input_trainer as it 
 import cPickle as pickle 
 
@@ -16,7 +15,7 @@ import cPickle as pickle
 def train(unigram=True,bigram=True):
     
         
-    tokens=it.input_prep(cfg.INPUT_PATH)
+    tokens=it.input_prep(INPUT_PATH)
        
     bigrams=list(ngrams(tokens,2))
     unigrams=list(ngrams(tokens,1))
@@ -26,7 +25,7 @@ def train(unigram=True,bigram=True):
     trigram_table=Counter(trigrams)
     
     
-    with open(cfg.MODEL_PATH+"bigram_table.dat", 'wb') as handle:
+    with open(MODEL_PATH+"bigram_table.dat", 'wb') as handle:
         pickle.dump(bigram_table, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
     prob_table_uni = defaultdict(dict)
@@ -39,7 +38,7 @@ def train(unigram=True,bigram=True):
         token=i[0][1]
         prob_table_uni[key].append(token)
           
-    with open(cfg.MODEL_PATH+"prob_table_uni.dat", 'wb') as handle:
+    with open(MODEL_PATH+"prob_table_uni.dat", 'wb') as handle:
         pickle.dump(prob_table_uni, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
     trigram_table_list=trigram_table.most_common()
@@ -52,7 +51,7 @@ def train(unigram=True,bigram=True):
         prob_table_bi[key].append(token) 
    
         
-    with open(cfg.MODEL_PATH+"prob_table_bi.dat", 'wb') as handle:
+    with open(MODEL_PATH+"prob_table_bi.dat", 'wb') as handle:
         pickle.dump(prob_table_bi, handle, protocol=pickle.HIGHEST_PROTOCOL)     
 
 if __name__ == '__main__':
