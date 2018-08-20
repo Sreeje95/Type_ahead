@@ -9,15 +9,13 @@ from collections import OrderedDict
 import cPickle as pickle 
 import re
 import sys
-import Config as cfg
 
 
-
-with open(cfg.MODEL_PATH+"prob_table_uni.dat", 'rb') as handle:
+with open(MODEL_PATH+"prob_table_uni.dat", 'rb') as handle:
         prob_table_uni = pickle.load(handle)
-with open(cfg.MODEL_PATH+"prob_table_bi.dat", 'rb') as handle:
+with open(MODEL_PATH+"prob_table_bi.dat", 'rb') as handle:
         prob_table_bi = pickle.load(handle) 
-with open(cfg.MODEL_PATH+"bigram_table.dat", 'rb') as handle:
+with open(MODEL_PATH+"bigram_table.dat", 'rb') as handle:
         bigram_table = pickle.load(handle)        
         
 bigram_table=bigram_table.most_common()        
@@ -58,7 +56,7 @@ def predict(query):
 
 
 if __name__ == '__main__':
-    predict("would agree our")
+    predict(query)
 
 
 
